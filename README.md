@@ -42,6 +42,7 @@ AWS Serverless application to Manage IAM users:- I have created a full-stack app
   - This configuration is placed in config package in my project
   - If you have some error like CommandLineRunner- invalid access id - (403) then 
   - Try this on you'r terminal
+  <pre>
     curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
    
     unzip awscliv2.zip
@@ -50,7 +51,7 @@ AWS Serverless application to Manage IAM users:- I have created a full-stack app
     aws configure set aws_secret_access_key    value
     aws configure set default.region           us-west-2
     
-    
+   </pre> 
 <h2>Frontend:</h2>
 
 We can create frontend using preferably angular or any other technology you like. This will be deployed on S3.
