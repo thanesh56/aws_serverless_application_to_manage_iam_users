@@ -84,7 +84,7 @@ Here Hosting is done through code pipline which is further divided into three ph
 
   <h4>CodeCommit:</h4> Here we need to create or configure the source repository by simple click and next operation, but before that you need to create some role along with policy such as awsCodeCommit,awsCodeBuild,awsCodeDeploy and ec2, access is depends on you'r requirment.
   
-  <img src="https://github.com/thanesh56/aws_serverless_application_to_manage_iam_users/tree/dev/assets/images/repo_1.png" alt="create repo">
+  ![repo_1](./assests/images/repo_1.png)
   
   <h4>CodeBuild:</h4> Here we need to configure build process along with buildspec.yml file where you can also you's external or different yml file but for this situation you need to put the file name in required field.
   
