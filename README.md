@@ -6,7 +6,7 @@ AWS Serverless application to Manage IAM users:- I have created a full-stack app
 <h2>Backend Serverless Application:</h2>
 
  - The backend code in java(spring boot)
-  - https://spring.io/projects/spring-boot
+   - https://spring.io/projects/spring-boot
 
 - We will need to use AWS SDK to connect to the AWS account and do IAM users related operations. 
   - https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/
