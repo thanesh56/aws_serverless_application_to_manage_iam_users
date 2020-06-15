@@ -1,0 +1,29 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: openjdk11
+
+  build:
+    commands:
+      - echo if we  get error like CommandlineRunner - invalid access id (403) then we need to insatll aws cli given below
+      - curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+      - unzip awscliv2.zip
+      - aws configure set aws_access_key_id          value
+      - aws configure set aws_secret_access_key      value
+      - aws configure set default.region             value
+      - mvn install
+
+artifacts:
+  files:
+    - target/*.jar
+    - scripts/*.sh
+    - appspec.yml
+    - s3 sync target/*.jar s3://bucketname/*.jar
+  discard-paths: yes
+
+
+cache:
+  paths:
+    - paths
