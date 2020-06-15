@@ -84,9 +84,55 @@ Here Hosting is done through code pipline which is further divided into three ph
 
   <h4>CodeCommit:</h4> Here we need to create or configure the source repository by simple click and next operation, but before that you need to create some role along with policy such as awsCodeCommit,awsCodeBuild,awsCodeDeploy and ec2, access is depends on you'r requirment.
   
-  ![craete_repo](assests/images/repo_1.png)
+  
+  
+  ![craete_repo](assests/images/repo_2.png)
+  
+  
+  <h6>Fig_1.1 Creation of new repository</h6>
+  
+  
+  <pre>
+
+ </pre>
+ 
+ ![craete_repo](assests/images/repo_1.png)
+  
+  
+  <h6>Fig_1.2 Clone the repo</h6>
+  
+  
+  <pre>
+
+ </pre>
+  
+  
+  
   
   <h4>CodeBuild:</h4> Here we need to configure build process along with buildspec.yml file where you can also you's external or different yml file but for this situation you need to put the file name in required field.
+  
+  
+  
+  
+  ![craete_repo](assests/images/build_1.png)
+  
+  
+  <h6>Fig_2.1 Create Build</h6>
+  
+  
+  <pre>
+
+ </pre>
+ 
+  ![craete_repo](assests/images/build_2.png)
+  
+  
+  <h6>Fig_2.2 Setting Environment</h6>
+  
+  
+  <pre>
+
+ </pre>
   
   
   buildspec.yml
@@ -124,6 +170,28 @@ Here Hosting is done through code pipline which is further divided into three ph
   </pre>
   
   <h4>CodeDeploy:</h4> Here we need configure the deployment field along with appspec.yml file this file will come along with with source file, so you need to filter that file from source file by configuring the filename in buildspec.yml file.
+  
+  
+  ![craete_repo](assests/images/deploy_1.png)
+  
+  
+  <h6>Fig_3.1 Create Deploy</h6>
+  
+  
+  <pre>
+
+  </pre>
+  
+  
+  ![craete_repo](assests/images/deploy_2.png)
+  
+  
+  <h6>Fig_3.2 Create Group</h6>
+  
+  
+  <pre>
+
+  </pre>
  
   appspec.yml
   <pre>
@@ -200,6 +268,59 @@ Here Hosting is done through code pipline which is further divided into three ph
     
   Now, Let's configure the CodePipline which connect the all pheses in single pipe like architecture.
   After creation of pipeline it will automatically start to perform each phase one by one until we get some error and complete the task, if any phase get some error then pipeline will stoped on to this phase and not go to next phase until we resolve the error.
+  
+  
+  ![create_repo](assests/images/pipeline_1.png)
+  
+  
+  <h6>Fig_4.1 Create Pipeline</h6>
+  
+  
+  <pre>
+
+  </pre>
+  
+  ![create_repo](assests/images/pipeline_2.png)
+  
+  
+  <h6>Fig_4.2 Add Source</h6>
+  
+  
+  <pre>
+
+  </pre>
+  
+  
+  ![create_repo](assests/images/pipeline_3.png)
+  
+  
+  <h6>Fig_4.3 Add Build</h6>
+  
+  
+  <pre>
+
+  </pre>
+  
+  
+  ![create_repo](assests/images/pipeline_4.png)
+  
+  
+  <h6>Fig_4.4 Add Deploy</h6>
+  
+  
+  <pre>
+
+  </pre>
+  
+  ![create_repo](assests/images/pipeline_5.png)
+  
+  
+  <h6>Fig_4.5 Pipeline Process</h6>
+  
+  
+  <pre>
+
+  </pre>
  
 
 <h2>Frontend:</h2> 
