@@ -74,7 +74,7 @@ https://www.youtube.com/playlist?list=PLqq-6Pq4lTTb7JGBTogaJ8bm7f8VCvFkj
 
 <h1>Hosting</h1>
 <h2>Backend:</h2>
-- Here Hoting is done through code pipline which is further divided into three phases
+Here Hosting is done through code pipline which is further divided into three phases
 
   <h4>CodeCommit:</h4> Here we need to create or configure the source repository by simple click and next operation, but before that you need to create some role along with policy such as awsCodeCommit,awsCodeBuild,awsCodeDeploy and ec2, access is depends on you'r requirment.
   
@@ -93,7 +93,7 @@ https://www.youtube.com/playlist?list=PLqq-6Pq4lTTb7JGBTogaJ8bm7f8VCvFkj
  
 
 <h2>Frontend:</h2> 
- - Similer operation is done into this phase with minner change on to buildspac.yml and no need to CodeDeploy Phase becuase s3 provide some feature to automatically deploy and host the html file.
+Similer operation is done into this phase with minner change on to buildspac.yml and no need to CodeDeploy Phase becuase s3 provide some feature to automatically deploy and host the html file.
 
 
 
