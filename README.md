@@ -4,7 +4,8 @@
 AWS Serverless application to Manage IAM users:- I have created a full-stack application to perform CRUD operation in IAM user, sync with Dynamodb table, and hosting is done through CodePipeline. 
 
 <h2>Backend Serverless Application:</h2>
-- The backend code in java(spring boot)
+
+ - The backend code in java(spring boot)
   - https://spring.io/projects/spring-boot
 
 - We will need to use AWS SDK to connect to the AWS account and do IAM users related operations. 
