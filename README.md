@@ -1,0 +1,113 @@
+# AWS Serverless Application To Manage Iam Users Using Java Angular
+# Hosting Through Codepipeline. 
+
+AWS Serverless application to Manage IAM users:- I have created a full-stack application to perform CRUD operation in IAM user, sync with Dynamodb table, and hosting is done through CodePipeline. 
+
+<h2>Backend Serverless Application:</h2>
+
+ - The backend code in java(spring boot)
+   - https://spring.io/projects/spring-boot
+
+- We will need to use AWS SDK to connect to the AWS account and do IAM users related operations. 
+  - https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/
+  SDK for Dynamodb
+  - https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-dynamodb
+  SDK for IAM
+  - https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-iam
+
+- The data will be stored in DynamoDB table.
+  - https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/examples-dynamodb.html 
+
+<h3>Requirement:</h3>
+
+- We need to create some APIs
+
+- Sync IAM users (This will get all the IAM users from the AWS account and add them to dynamodb. Remove old users to avoid duplication.)
+ 
+- List IAM users (This will get all the IAM users from Dynamodb and return as json)
+
+- Show single IAM user details (This will get 1 IAM user detail for which the details requested from DynamoDB)
+
+- Delete IAM user (This will delete the IAM user from AWS then accordingly user also deleted from DyanmoDB and do sync again)
+
+- Create IAM user (This will create new IAM user in AWS account and do sync again)
+
+- Before that need few configurations 
+  - Dyanmodb Configuration:- Here we can configure the dynamodb mapper for that we need credentials of aws dynamodb, for that we need to create one IAM User as an Administrator Access for programatic and aws cli to secure the root access and create one ploicy for Dynamodb access which is used in dynamodb mapper this is included in properties file  or the secure way we can use    AWS Security Manager for that we need another configuration which is a key management service(KMS)
+    IAM
+    - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html#id_users_create_console
+    KMS
+    - https://docs.aws.amazon.com/kms/latest/developerguide/overview.html
+    
+  - This configuration is placed in config package in my project
+  - If you have some error like CommandLineRunner- invalid access id - (403) then 
+  - Try this on you'r terminal
+  <pre>
+    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+   
+    unzip awscliv2.zip
+    
+    aws configure set aws_access_key_id        value
+    aws configure set aws_secret_access_key    value
+    aws configure set default.region           us-west-2
+    
+   </pre> 
+<h2>Frontend:</h2>
+
+We can create frontend using preferably angular or any other technology you like. This will be deployed on S3.
+
+https://www.techiediaries.com/angular/angular-9-8-tutorial-by-example-rest-crud-apis-http-get-requests-with-httpclient/
+
+https://www.djamware.com/post/5d8d7fc10daa6c77eed3b2f2/angular-8-tutorial-rest-api-and-httpclient-examples
+
+https://www.youtube.com/playlist?list=PLqq-6Pq4lTTb7JGBTogaJ8bm7f8VCvFkj
+
+
+- Single Page IAM user list table. Show all IAM users. (List IAM user api will be called)
+
+- Each User row will have 2 buttons, More, Delete
+
+- More button will show all the user details (Will call Show single IAM user details API)
+
+- Delete the IAM user button click calls the delete API. (Will call Show delete IAM user API)
+
+- There will be a Create button on the page. This will open a pop asking User details. (Will call the Create IAM user API)
+
+<h1>Hosting</h1>
+<h2>Backend:</h2>
+Here Hosting is done through code pipline which is further divided into three phases
+
+  <h4>CodeCommit:</h4> Here we need to create or configure the source repository by simple click and next operation, but before that you need to create some role along with policy such as awsCodeCommit,awsCodeBuild,awsCodeDeploy and ec2, access is depends on you'r requirment.
+  
+  <h4>CodeBuild:</h4> Here we need to configure build process along with buildspec.yml file where you can also you's external or different yml file but for this situation you need to put the file name in required field.
+  
+  <h4>CodeDeploy:</h4> Here we need configure the deployment field along with appspec.yml file this file will come along with with source file, so you need to filter that file from source file by configuring the filename in buildspec.yml file.
+  - Make sure to create one tag which is used in ec2 instance creation phase.
+  
+  - Create the ec2 instance and use the created tag and iamroll
+    - https://docs.aws.amazon.com/efs/latest/ug/gs-step-one-create-ec2-resources.html
+  - After creation of ec2 instance we need to install codedeployagent
+    - https://docs.aws.amazon.com/codedeploy/latest/userguide/codedeploy-agent-operations-install.html
+    
+  Now, Let's configure the CodePipline which connect the all pheses in single pipe like architecture.
+  After creation of pipeline it will automatically start to perform each phase one by one until we get some error and complete the task, if any phase get some error then pipeline will stoped on to this phase and not go to next phase until we resolve the error.
+ 
+
+<h2>Frontend:</h2> 
+Similer operation is done into this phase with minner change on to buildspac.yml and no need to CodeDeploy Phase becuase s3 provide some feature to automatically deploy and host the html file.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
