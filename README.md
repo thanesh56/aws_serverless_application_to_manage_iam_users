@@ -10,10 +10,15 @@ AWS Serverless application to Manage IAM users:- I have created a full-stack app
 
 - We will need to use AWS SDK to connect to the AWS account and do IAM users related operations. 
   - https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/
+  
   SDK for Dynamodb
   - https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-dynamodb
+  
   SDK for IAM
   - https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-iam
+  
+  SDK for Secretsmanager
+  - https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-secretsmanager
 
 - The data will be stored in DynamoDB table.
   - https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/examples-dynamodb.html 
@@ -49,7 +54,7 @@ AWS Serverless application to Manage IAM users:- I have created a full-stack app
     
     aws configure set aws_access_key_id        value
     aws configure set aws_secret_access_key    value
-    aws configure set default.region           us-west-2
+    aws configure set default.region           value
     
    </pre> 
 <h2>Frontend:</h2>
@@ -81,8 +86,9 @@ Here Hosting is done through code pipline which is further divided into three ph
   
   <h4>CodeBuild:</h4> Here we need to configure build process along with buildspec.yml file where you can also you's external or different yml file but for this situation you need to put the file name in required field.
   
+  
+  buildspec.yml
   <pre>
-  <u>buildspec.yml</u>
     version: 0.2
 
     phases:
@@ -116,8 +122,9 @@ Here Hosting is done through code pipline which is further divided into three ph
   </pre>
   
   <h4>CodeDeploy:</h4> Here we need configure the deployment field along with appspec.yml file this file will come along with with source file, so you need to filter that file from source file by configuring the filename in buildspec.yml file.
- <pre>
+ 
   appspec.yml
+  <pre>
     version: 0.0
     os: linux
     files:
@@ -154,6 +161,7 @@ Here Hosting is done through code pipline which is further divided into three ph
  
  <pre>
   start_server.sh
+  
       #!/bin/bash
       curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
       unzip awscliv2.zip
