@@ -1,4 +1,4 @@
-# AWS Serverless Application To Manage Iam Users Using Java Angular
+# AWS Serverless Application To Manage IAM Users Using Java Angular
 # Hosting Through Codepipeline. 
 
 AWS Serverless application to Manage IAM users:- I have created a full-stack application to perform CRUD operation in IAM user, sync with Dynamodb table, and hosting is done through CodePipeline. 
@@ -45,8 +45,8 @@ AWS Serverless application to Manage IAM users:- I have created a full-stack app
     - https://docs.aws.amazon.com/kms/latest/developerguide/overview.html
     
   - This configuration is placed in config package in my project
-  - If you have some error like CommandLineRunner- invalid access id - (403) then 
-  - Try this on you'r terminal
+  - If we get some error like CommandLineRunner- invalid access id - (403) then 
+  - Try need to install aws cli on terminal configuration given bellow
   <pre>
     curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
    
@@ -109,7 +109,7 @@ Here Hosting is done through code pipline which is further divided into three ph
   
   
   
-  <h4>CodeBuild:</h4> Here we need to configure build process along with buildspec.yml file where you can also you's external or different yml file but for this situation you need to put the file name in required field.
+  <h4>CodeBuild:</h4> Here we need to configure build process along with buildspec.yml file where we can also use external or different yml file but for this situation we need to put the file name in required field.
   
   
   
@@ -233,6 +233,8 @@ Here Hosting is done through code pipline which is further divided into three ph
   start_server.sh
   
       #!/bin/bash
+      
+      #if we get error like CommandLineRunner: invalid access id -(403) then need to install aws cli and configure
       curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
       unzip awscliv2.zip
 
