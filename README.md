@@ -92,9 +92,7 @@ Here Hosting is done through code pipline which is further divided into three ph
   <h6>Fig_1.1 Creation of new repository</h6>
   
   
-  <pre>
-
- </pre>
+  <br><br><br>
  
  ![craete_repo](assests/images/repo_1.png)
   
@@ -102,9 +100,7 @@ Here Hosting is done through code pipline which is further divided into three ph
   <h6>Fig_1.2 Clone the repo</h6>
   
   
-  <pre>
-
- </pre>
+  <br><br><br>
   
   
   
@@ -120,9 +116,7 @@ Here Hosting is done through code pipline which is further divided into three ph
   <h6>Fig_2.1 Create Build</h6>
   
   
-  <pre>
-
- </pre>
+<br><br><br>
  
   ![craete_repo](assests/images/build_2.png)
   
@@ -130,9 +124,7 @@ Here Hosting is done through code pipline which is further divided into three ph
   <h6>Fig_2.2 Setting Environment</h6>
   
   
-  <pre>
-
- </pre>
+ <br><br><br>
   
   
   buildspec.yml
@@ -178,9 +170,7 @@ Here Hosting is done through code pipline which is further divided into three ph
   <h6>Fig_3.1 Create Deploy</h6>
   
   
-  <pre>
-
-  </pre>
+ <br><br><br>
   
   
   ![craete_repo](assests/images/deploy_2.png)
@@ -189,9 +179,7 @@ Here Hosting is done through code pipline which is further divided into three ph
   <h6>Fig_3.2 Create Group</h6>
   
   
-  <pre>
-
-  </pre>
+ <br><br><br>
  
   appspec.yml
   <pre>
@@ -278,9 +266,7 @@ Here Hosting is done through code pipline which is further divided into three ph
   <h6>Fig_4.1 Create Pipeline</h6>
   
   
-  <pre>
-
-  </pre>
+  <br><br><br>
   
   ![create_repo](assests/images/pipeline_2.png)
   
@@ -288,9 +274,7 @@ Here Hosting is done through code pipline which is further divided into three ph
   <h6>Fig_4.2 Add Source</h6>
   
   
-  <pre>
-
-  </pre>
+ <br><br><br>
   
   
   ![create_repo](assests/images/pipeline_3.png)
@@ -299,9 +283,7 @@ Here Hosting is done through code pipline which is further divided into three ph
   <h6>Fig_4.3 Add Build</h6>
   
   
-  <pre>
-
-  </pre>
+  <br><br><br>
   
   
   ![create_repo](assests/images/pipeline_4.png)
@@ -309,24 +291,77 @@ Here Hosting is done through code pipline which is further divided into three ph
   
   <h6>Fig_4.4 Add Deploy</h6>
   
-  
-  <pre>
-
-  </pre>
+  <br><br><br>
   
   ![create_repo](assests/images/pipeline_5.png)
   
   
   <h6>Fig_4.5 Pipeline Process</h6>
+  <br><br><br>
   
-  
-  <pre>
 
-  </pre>
  
 
 <h2>Frontend:</h2> 
 Similer operation is done into this phase with minner change on to buildspac.yml and no need to CodeDeploy Phase becuase s3 provide some feature to automatically deploy and host the html file.
+
+buildspec.yml
+<pre>
+ 
+version: 0.2
+
+
+phases:
+  install:
+    runtime-versions:
+        nodejs: 10
+        
+    commands:
+        - npm install
+        - npm install -g @angular/cli
+    
+  build:
+    commands:
+        - ng build --prod
+     
+  post_build:
+    commands:
+        - aws s3 sync ./dist/iamuser-app s3://angularbucketname --acl 'public-read'
+    
+artifacts:
+  files:
+    - '**/*'
+  
+  discard-paths: yes
+  base-directory: 'dist*'
+
+</pre>
+
+
+S3 provide static web Hosting where we can host our simple app in only few clicks
+
+<br>
+
+![create_repo](assests/images/s3_1.png)
+  
+  
+  <h6>Fig_5.1 S3 Bucket have list of files</h6>
+  <br><br><br>
+  
+  
+  
+  ![create_repo](assests/images/s3_2.png)
+  
+  
+  <h6>Fig_5.2 Here we go to properties section</h6>
+  <br><br><br>
+
+
+![create_repo](assests/images/s3_3.png)
+  
+  
+  <h6>Fig_5.3 configure static web host and Hit endpoint</h6>
+  <br><br><br>
 
 
 
