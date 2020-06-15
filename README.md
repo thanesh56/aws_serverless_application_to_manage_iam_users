@@ -1,8 +1,9 @@
 # aws_serverless_application_to_manage_iam_users_using_java_angular
+# hosting_through_codepipeline. 
 
 AWS Serverless application to Manage IAM users:- I have created a full-stack application to perform CRUD operation in IAM user, sync with Dynamodb table, and hosting is done through CodePipeline. 
 
-Backend Serverless Application:-
+<h2>Backend Serverless Application:-</h2>
 - The backend code in java(spring boot)
   - https://spring.io/projects/spring-boot
 
@@ -35,7 +36,7 @@ Requirement:
 
 
  
-Frontend:
+<h2>Frontend:</h2>
 
 We can create frontend using preferably angular or any other technology you like. This will be deployed on S3.
 
@@ -55,9 +56,9 @@ https://www.djamware.com/post/5d8d7fc10daa6c77eed3b2f2/angular-8-tutorial-rest-a
 - There will be a Create button on the page. This will open a pop asking User details. (Will call the Create IAM user API)
 
 
-Hosting
-Backend:-
-Frontend:-
+#Hosting
+<h2>Backend</h2>:-
+<h2>Frontend</h2>:-
 
 
 
